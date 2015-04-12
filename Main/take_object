@@ -1,0 +1,91 @@
+PShape square;  // The PShape object
+ 
+int xLeft =300;
+int yLeft =300;
+int t1 = 250;
+int t2= 250;
+int zLeft =0;
+boolean tom = false;
+ 
+PFont xLeftFont,yLeftFont; 
+ 
+void setup() {
+  size(600, 600, P2D);
+  // Creating the PShape as a square. The
+  // numeric arguments are similar to rect().
+  square = createShape(RECT, 0, 0, 100, 50);
+  square.setFill(color(0, 0, 255));
+  square.setStroke(false);
+  xLeftFont = createFont("Arial",16,true); 
+  yLeftFont = createFont("Arial",16,true); 
+}
+ 
+void draw() {
+  background(204);
+  
+  textFont(xLeftFont,16);
+  text("X Left: "+xLeft,10,100);
+  
+  textFont(xLeftFont,16);
+  text("y Left: "+yLeft,10,120);
+  
+  ellipse(xLeft,yLeft,10,10);
+  
+  shape(square, 25, 500);
+  
+  shape(square, 180, 500);
+  
+  //el objeto seria constante (herramientas)
+  //dos primero: lugar en plano... dos segundos: anco y largo
+  rect(t1, t2, 50, 50);
+  if(tom == true){
+    tomar();
+  }
+  
+}
+ 
+ 
+void keyPressed() {
+  
+  switch(key)
+  {
+    case 'd':
+      xLeft = xLeft +10;
+      break;
+      
+    case 'a':
+      xLeft=xLeft-10;
+      break;
+      
+    case 's':
+      yLeft= yLeft+10;
+      break;  
+      
+      
+    case 'w':
+      yLeft=yLeft-10;
+      break;
+      
+    case 'o':
+      if(xLeft>=t1 && xLeft<=t2+50){
+         if(yLeft>=t1 && yLeft<=t2+50){
+             tom=true;
+         }
+      }else{tom = false;}
+      
+      break;
+      
+    case 'p':
+      tom=false;
+      t1=t1;
+      t2=t2;
+      break;
+    
+  }
+}
+ 
+void tomar(){
+  t1 = xLeft;
+  t2 = yLeft;
+ 
+ } 
